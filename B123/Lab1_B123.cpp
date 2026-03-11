@@ -10,7 +10,7 @@ void Nhap(int &t, int &m){
 /* Hàm tìm UCLN
 Input: t, m
 Output: ước chung lớn nhất của t và m */
-int UCLN(int a, int b){
+int UCLN(int a, int b){ //biến trung gian
     a = abs(a);
     b = abs(b);
 
