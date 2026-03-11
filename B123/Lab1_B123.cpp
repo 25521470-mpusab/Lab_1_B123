@@ -23,11 +23,9 @@ int UCLN(int a, int b){
     return a;
 }
 
-/*
-Hàm rút gọn phân số
+/* Hàm rút gọn phân số
 Input: t, m
-Output: phân số đã rút gọn
-*/
+Output: phân số đã rút gọn */
 void RutGon(int &t, int &m){
 
     int g = UCLN(t,m);
@@ -41,11 +39,9 @@ void RutGon(int &t, int &m){
         m = -m;
     }
 }
-/*
-Hàm xuất phân số
+/* Hàm xuất phân số
 Input: t, m
-Output: in phân số ra màn hình
-*/
+Output: in phân số ra màn hình */
 void Xuat(int t, int m){
     cout << t << "/" << m;
 }
