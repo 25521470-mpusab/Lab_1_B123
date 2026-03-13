@@ -1,65 +1,142 @@
 #include <iostream>
 using namespace std;
 
-/* Hàm nhập phân số
-Input: tử số t, mẫu số m
-Output: giá trị t và m được nhập từ bàn phím */
-void Nhap(int &t, int &m){
-    cin >> t >> m;
-}
-/* Hàm tìm UCLN
-Input: t, m
-Output: ước chung lớn nhất của t và m */
-int UCLN(int a, int b){ //biến trung gian
-    a = abs(a);
-    b = abs(b);
+/*
+Struct PhanSo
+Lưu trữ tử số và mẫu số của một phân số
+*/
+struct PhanSo{
+    int tu;
+    int mau;
+};
 
-    while(b != 0){
-        int r = a % b;
-        a = b;
-        b = r;
+/*
+Hàm gcd
+Input: hai số nguyên
+Output: ước chung lớn nhất
+*/
+int gcd(int a, int b){
+    while(b!=0){
+        int r=a%b;
+        a=b;
+        b=r;
     }
-
     return a;
 }
 
-/* Hàm rút gọn phân số
-Input: t, m
-Output: phân số đã rút gọn */
-void RutGon(int &t, int &m){
-
-    int g = UCLN(t,m);
-
-    t = t / g;
-    m = m / g;
-
-    // chuẩn hóa dấu
-    if(m < 0){
-        t = -t;
-        m = -m;
-    }
+/*
+Hàm rút gọn phân số
+Input: một phân số
+Output: phân số đã rút gọn
+*/
+void rutGon(PhanSo &ps){
+    int g=gcd(ps.tu,ps.mau);
+    ps.tu/=g;
+    ps.mau/=g;
 }
-/* Hàm xuất phân số
-Input: t, m
-Output: in phân số ra màn hình */
-void Xuat(int t, int m){
-    cout << t << "/" << m;
+
+/*
+Hàm nhập phân số
+*/
+void nhap(PhanSo &ps){
+    cin>>ps.tu>>ps.mau;
+}
+
+/*
+Hàm xuất phân số
+*/
+void xuat(PhanSo ps){
+    cout<<ps.tu<<"/"<<ps.mau;
+}
+
+/*
+Hàm so sánh hai phân số
+Output: true nếu ps1 > ps2
+*/
+bool lonHon(PhanSo ps1, PhanSo ps2){
+    return ps1.tu*ps2.mau > ps2.tu*ps1.mau;
+}
+
+/*
+Hàm cộng hai phân số
+*/
+PhanSo tong(PhanSo a, PhanSo b){
+    PhanSo kq;
+    kq.tu = a.tu*b.mau + b.tu*a.mau;
+    kq.mau = a.mau*b.mau;
+    rutGon(kq);
+    return kq;
+}
+
+/*
+Hàm trừ hai phân số
+*/
+PhanSo hieu(PhanSo a, PhanSo b){
+    PhanSo kq;
+    kq.tu = a.tu*b.mau - b.tu*a.mau;
+    kq.mau = a.mau*b.mau;
+    rutGon(kq);
+    return kq;
+}
+
+/*
+Hàm nhân hai phân số
+*/
+PhanSo tich(PhanSo a, PhanSo b){
+    PhanSo kq;
+    kq.tu = a.tu*b.tu;
+    kq.mau = a.mau*b.mau;
+    rutGon(kq);
+    return kq;
+}
+
+/*
+Hàm chia hai phân số
+*/
+PhanSo thuong(PhanSo a, PhanSo b){
+    PhanSo kq;
+    kq.tu = a.tu*b.mau;
+    kq.mau = a.mau*b.tu;
+    rutGon(kq);
+    return kq;
 }
 
 int main(){
 
-    int t, m;
+    PhanSo a,b;
 
-    Nhap(t,m);
+    cout<<"Nhap phan so thu 1: ";
+    nhap(a);
 
-    if(m == 0){
-        cout << "Mau so khong hop le";
-        return 0;
-    }
+    cout<<"Nhap phan so thu 2: ";
+    nhap(b);
 
-    RutGon(t,m);
+    rutGon(a);
+    rutGon(b);
 
-    Xuat(t,m);
+    cout<<"Phan so 1: ";
+    xuat(a);
+
+    cout<<"\nPhan so 2: ";
+    xuat(b);
+
+    cout<<"\nPhan so lon hon: ";
+    if(lonHon(a,b))
+        xuat(a);
+    else
+        xuat(b);
+
+    cout<<"\nTong: ";
+    xuat(tong(a,b));
+
+    cout<<"\nHieu: ";
+    xuat(hieu(a,b));
+
+    cout<<"\nTich: ";
+    xuat(tich(a,b));
+
+    cout<<"\nThuong: ";
+    xuat(thuong(a,b));
 
     return 0;
 }
