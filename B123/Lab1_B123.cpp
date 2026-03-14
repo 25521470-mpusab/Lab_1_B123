@@ -1,20 +1,16 @@
 #include <iostream>
 using namespace std;
 
-/*
-Struct PhanSo
-Lưu trữ tử số và mẫu số của một phân số
-*/
+/* Struct PhanSo
+Lưu trữ tử số và mẫu số của một phân số */
 struct PhanSo{
     int tu;
     int mau;
 };
 
-/*
-Hàm gcd
+/* Hàm gcd
 Input: hai số nguyên
-Output: ước chung lớn nhất
-*/
+Output: ước chung lớn nhất */
 int gcd(int a, int b){
     while(b!=0){
         int r=a%b;
@@ -24,27 +20,21 @@ int gcd(int a, int b){
     return a;
 }
 
-/*
-Hàm rút gọn phân số
+/* Hàm rút gọn phân số
 Input: một phân số
-Output: phân số đã rút gọn
-*/
+Output: phân số đã rút gọn */
 void rutGon(PhanSo &ps){
     int g=gcd(ps.tu,ps.mau);
     ps.tu/=g;
     ps.mau/=g;
 }
 
-/*
-Hàm nhập phân số
-*/
+/* Hàm nhập phân số */
 void nhap(PhanSo &ps){
     cin>>ps.tu>>ps.mau;
 }
 
-/*
-Hàm xuất phân số
-*/
+/* Hàm xuất phân số */
 void xuat(PhanSo ps){
     cout<<ps.tu<<"/"<<ps.mau;
 }
