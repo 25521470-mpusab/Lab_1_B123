@@ -1,5 +1,4 @@
 #include <iostream>
- 
 using namespace std;
  
 struct Date{
@@ -7,11 +6,13 @@ struct Date{
     int month;
     int year;
 };
+
 bool ktraNamNhuan(int year){
     if( year % 400 == 0) return true;
     if( year % 4 == 0 && year % 100 != 0) return true;
     return false;
 }
+
 int NgayTrongThang( int month, int year){
     switch(month){
         case 1: case 3: case 5: case 7:
@@ -24,18 +25,19 @@ int NgayTrongThang( int month, int year){
  
     }
 }
+
 void addDate(Date &d, int numDays){
     d.day += numDays;
     while(d.day > NgayTrongThang(d.month, d.year)){
         d.day -= NgayTrongThang(d.month, d.year);
         d.month ++;
-    while (d.month > 12){
+   
+     while (d.month > 12){
         d.month -= 12;
         d.year ++;
         }
     }
 }
- 
  
 int main()
 {
