@@ -1,24 +1,12 @@
 #include <iostream>
 using namespace std;
 
-/*
-Struct Ngay
-Lưu trữ thông tin một ngày gồm:
-- ngay
-- thang
-- nam
-*/
 struct Ngay{
     int ngay;
     int thang;
     int nam;
 };
 
-/*
-Hàm kiểm tra năm nhuận
-Input: nam
-Output: true nếu là năm nhuận, false nếu không
-*/
 bool ktraNamNhuan(int nam){
     if(nam % 400 == 0) return true;
     if(nam % 4 == 0 && nam % 100 != 0) return true;
