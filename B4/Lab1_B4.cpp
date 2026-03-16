@@ -13,11 +13,6 @@ bool ktraNamNhuan(int nam){
     return false;
 }
 
-/*
-Hàm trả về số ngày trong một tháng
-Input: thang, nam
-Output: số ngày của tháng đó
-*/
 int NgayMay(int thang, int nam){
     switch(thang){
         case 1: case 3: case 5: case 7:
@@ -34,21 +29,12 @@ int NgayMay(int thang, int nam){
     return 0;
 }
 
-/*
-Hàm cộng thêm một số ngày vào ngày ban đầu
-Input:
-- d: ngày ban đầu
-- soNgayThem: số ngày cần cộng
+void ngayKeTiep(Ngay &d){
 
-Output:
-- cập nhật lại ngày mới
-*/
-void themNgay(Ngay &d, int soNgayThem){
+    d.ngay++;
 
-    d.ngay += soNgayThem;
-
-    while(d.ngay > NgayMay(d.thang, d.nam)){
-        d.ngay -= NgayMay(d.thang, d.nam);
+    if(d.ngay > NgayMay(d.thang, d.nam)){
+        d.ngay = 1;
         d.thang++;
 
         if(d.thang > 12){
@@ -62,16 +48,10 @@ int main(){
 
     Ngay a;
 
-    // Nhập ngày ban đầu
     cin >> a.ngay >> a.thang >> a.nam;
 
-    int soNgay;
-    cin >> soNgay;
+    ngayKeTiep(a);
 
-    // Cộng thêm ngày
-    themNgay(a, soNgay);
-
-    // Xuất kết quả
     cout << a.ngay << "/" << a.thang << "/" << a.nam;
 
     return 0;
