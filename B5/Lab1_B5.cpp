@@ -25,11 +25,8 @@ void xuatHocSinh(HocSinh hs){
 }
 
 int main(){
-
     HocSinh hs;
-
     nhapHocSinh(hs);
-
     xuatHocSinh(hs);
 
     return 0;
