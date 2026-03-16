@@ -1,7 +1,5 @@
 #include <iostream>
-using namespace std;
-
-#include <iostream>
+#include <string>
 using namespace std;
 
 struct HocSinh{
@@ -10,22 +8,29 @@ struct HocSinh{
     float van;
 };
 
+void nhapHocSinh(HocSinh &hs){
+    cin.ignore();                
+    getline(cin, hs.hoten);       
+    cin >> hs.toan;
+    cin >> hs.van;
+}
+
+float tinhDTB(HocSinh hs){
+    return (hs.toan + hs.van) / 2;
+}
+
+void xuatHocSinh(HocSinh hs){
+    cout << "Ho ten: " << hs.hoten << endl;
+    cout << "Diem trung binh: " << tinhDTB(hs);
+}
+
 int main(){
 
     HocSinh hs;
 
-    cout<<"Nhap ho ten: ";
-    getline(cin,hs.hoten);
+    nhapHocSinh(hs);
 
-    cout<<"Nhap diem toan: ";
-    cin>>hs.toan;
+    xuatHocSinh(hs);
 
-    cout<<"Nhap diem van: ";
-    cin>>hs.van;
-
-    float dtb=(hs.toan+hs.van)/2;
-
-    cout<<"Ho ten: "<<hs.hoten<<endl;
-    cout<<"Diem trung binh: "<<dtb;
-
+    return 0;
 }
