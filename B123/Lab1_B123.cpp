@@ -64,9 +64,7 @@ PhanSo tich(PhanSo a, PhanSo b){
     return kq;
 }
 
-/*
-Hàm chia hai phân số
-*/
+/* Hàm chia hai phân số */
 PhanSo thuong(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau;
