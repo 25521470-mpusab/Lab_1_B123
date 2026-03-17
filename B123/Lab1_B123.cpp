@@ -1,16 +1,11 @@
 #include <iostream>
 using namespace std;
 
-/* Struct PhanSo
-Lưu trữ tử số và mẫu số của một phân số */
 struct PhanSo{
     int tu;
     int mau;
 };
 
-/* Hàm gcd
-Input: hai số nguyên
-Output: ước chung lớn nhất */
 int gcd(int a, int b){
     while(b!=0){
         int r=a%b;
@@ -29,7 +24,6 @@ void rutGon(PhanSo &ps){
     ps.mau/=g;
 }
 
-/* Hàm nhập phân số */
 void nhap(PhanSo &ps){
     cin>>ps.tu>>ps.mau;
 }
