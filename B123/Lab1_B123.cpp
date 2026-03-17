@@ -15,9 +15,6 @@ int gcd(int a, int b){
     return a;
 }
 
-/* Hàm rút gọn phân số
-Input: một phân số
-Output: phân số đã rút gọn */
 void rutGon(PhanSo &ps){
     int g=gcd(ps.tu,ps.mau);
     ps.tu/=g;
@@ -28,7 +25,6 @@ void nhap(PhanSo &ps){
     cin>>ps.tu>>ps.mau;
 }
 
-/* Hàm xuất phân số */
 void xuat(PhanSo ps){
     cout<<ps.tu<<"/"<<ps.mau;
 }
@@ -41,9 +37,7 @@ bool lonHon(PhanSo ps1, PhanSo ps2){
     return ps1.tu*ps2.mau > ps2.tu*ps1.mau;
 }
 
-/*
-Hàm cộng hai phân số
-*/
+/* Hàm cộng hai phân số */
 PhanSo tong(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau + b.tu*a.mau;
@@ -52,9 +46,7 @@ PhanSo tong(PhanSo a, PhanSo b){
     return kq;
 }
 
-/*
-Hàm trừ hai phân số
-*/
+/* Hàm trừ hai phân số */
 PhanSo hieu(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau - b.tu*a.mau;
@@ -63,9 +55,7 @@ PhanSo hieu(PhanSo a, PhanSo b){
     return kq;
 }
 
-/*
-Hàm nhân hai phân số
-*/
+/* Hàm nhân hai phân số */
 PhanSo tich(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.tu;
