@@ -29,10 +29,7 @@ void xuat(PhanSo ps){
     cout<<ps.tu<<"/"<<ps.mau;
 }
 
-/*
-Hàm so sánh hai phân số
-Output: true nếu ps1 > ps2
-*/
+/* Hàm so sánh hai phân số */
 bool lonHon(PhanSo ps1, PhanSo ps2){
     return ps1.tu*ps2.mau > ps2.tu*ps1.mau;
 }
