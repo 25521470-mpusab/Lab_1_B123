@@ -115,11 +115,14 @@ int main(){
     rutGon(ps3);
 
     // So sánh
-    cout << "Phan so lon hon: ";
-    if(lonHon(ps2, ps3)){
+    cout << "Phan so lon hon la: ";
+
+if(lonHon(ps2, ps3)){
+    // Trường hợp ps2 > ps3
     xuat(ps2);
 }
 else{
+    // Trường hợp ps2 <= ps3
     xuat(ps3);
 }
 
