@@ -137,10 +137,13 @@ else{
     xuat(tich(ps2, ps3));
 
     cout << "\nThuong: ";
-    if(ps3.tu == 0)
-        cout << "Khong the chia";
-    else
-        xuat(thuong(ps2, ps3));
+    if(ps3.tu == 0){
+    cout << "Khong the chia cho phan so bang 0";
+}
+else{
+    PhanSo ketQua = thuong(ps2, ps3);
+    xuat(ketQua);
+}
 
     cout << endl;
 
