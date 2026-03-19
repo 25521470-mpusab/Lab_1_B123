@@ -1,40 +1,95 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
+/*
+==================== STRUCT ====================
+Lưu trữ phân số gồm tử và mẫu
+*/
 struct PhanSo{
     int tu;
     int mau;
 };
 
+/*
+==================== NHẬP SỐ NGUYÊN ====================
+Kiểm tra nhập hợp lệ (không phải số thì nhập lại)
+*/
+void nhapSo(int &x){
+    while(!(cin >> x)){
+        cout << "Loi! Nhap so nguyen: ";
+        cin.clear();
+        cin.ignore(1000,'\n');
+    }
+}
+
+/*
+==================== NHẬP PHÂN SỐ ====================
+- Nhập tử và mẫu
+- Kiểm tra mẫu khác 0
+*/
+void nhap(PhanSo &ps){
+    cout << "Nhap tu: ";
+    nhapSo(ps.tu);
+
+    cout << "Nhap mau: ";
+    nhapSo(ps.mau);
+
+    while(ps.mau == 0){
+        cout << "Mau phai khac 0. Nhap lai: ";
+        nhapSo(ps.mau);
+    }
+}
+
+/*
+==================== UCLN ====================
+Tính ước chung lớn nhất
+*/
 int gcd(int a, int b){
-    while(b!=0){
-        int r=a%b;
-        a=b;
-        b=r;
+    a = abs(a);
+    b = abs(b);
+    while(b){
+        int r = a % b;
+        a = b;
+        b = r;
     }
     return a;
 }
 
+/*
+==================== RÚT GỌN ====================
+- Đưa mẫu về dương
+- Rút gọn phân số
+*/
 void rutGon(PhanSo &ps){
-    int g=gcd(ps.tu,ps.mau);
-    ps.tu/=g;
-    ps.mau/=g;
+    if(ps.mau < 0){
+        ps.tu = -ps.tu;
+        ps.mau = -ps.mau;
+    }
+
+    int g = gcd(ps.tu, ps.mau);
+    ps.tu /= g;
+    ps.mau /= g;
 }
 
-void nhap(PhanSo &ps){
-    cin>>ps.tu>>ps.mau;
-}
-
+/*
+==================== XUẤT ====================
+*/
 void xuat(PhanSo ps){
-    cout<<ps.tu<<"/"<<ps.mau;
+    cout << ps.tu << "/" << ps.mau;
 }
 
-/* Hàm so sánh hai phân số */
-bool lonHon(PhanSo ps1, PhanSo ps2){
-    return ps1.tu*ps2.mau > ps2.tu*ps1.mau;
+/*
+==================== SO SÁNH ====================
+Trả về true nếu a > b
+*/
+bool lonHon(PhanSo a, PhanSo b){
+    return a.tu * b.mau > b.tu * a.mau;
 }
 
-/* Hàm cộng hai phân số */
+/*
+==================== CÁC PHÉP TOÁN ====================
+*/
 PhanSo tong(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau + b.tu*a.mau;
@@ -43,7 +98,6 @@ PhanSo tong(PhanSo a, PhanSo b){
     return kq;
 }
 
-/* Hàm trừ hai phân số */
 PhanSo hieu(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau - b.tu*a.mau;
@@ -52,7 +106,6 @@ PhanSo hieu(PhanSo a, PhanSo b){
     return kq;
 }
 
-/* Hàm nhân hai phân số */
 PhanSo tich(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.tu;
@@ -61,7 +114,6 @@ PhanSo tich(PhanSo a, PhanSo b){
     return kq;
 }
 
-/* Hàm chia hai phân số */
 PhanSo thuong(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau;
@@ -70,42 +122,58 @@ PhanSo thuong(PhanSo a, PhanSo b){
     return kq;
 }
 
+/*
+==================== MAIN ====================
+Chương trình gồm:
+1. Rút gọn 1 phân số
+2. So sánh + tính toán 2 phân số
+*/
 int main(){
+    PhanSo ps1, ps2, ps3;
 
-    PhanSo a,b;
+    // ===== BÀI 1 =====
+    cout << "===== RUT GON PHAN SO =====\n";
+    nhap(ps1);
+    rutGon(ps1);
 
-    cout<<"Nhap phan so thu 1: ";
-    nhap(a);
+    cout << "Ket qua: ";
+    xuat(ps1);
+    cout << endl;
 
-    cout<<"Nhap phan so thu 2: ";
-    nhap(b);
+    // ===== BÀI 2 + 3 =====
+    cout << "\n===== SO SANH VA TINH TOAN =====\n";
 
-    rutGon(a);
-    rutGon(b);
+    cout << "Nhap phan so thu 1:\n";
+    nhap(ps2);
 
-    cout<<"Phan so 1: ";
-    xuat(a);
+    cout << "Nhap phan so thu 2:\n";
+    nhap(ps3);
 
-    cout<<"\nPhan so 2: ";
-    xuat(b);
+    rutGon(ps2);
+    rutGon(ps3);
 
-    cout<<"\nPhan so lon hon: ";
-    if(lonHon(a,b))
-        xuat(a);
+    // So sánh
+    cout << "Phan so lon hon: ";
+    if(lonHon(ps2, ps3)) xuat(ps2);
+    else xuat(ps3);
+
+    // Tính toán
+    cout << "\nTong: ";
+    xuat(tong(ps2, ps3));
+
+    cout << "\nHieu: ";
+    xuat(hieu(ps2, ps3));
+
+    cout << "\nTich: ";
+    xuat(tich(ps2, ps3));
+
+    cout << "\nThuong: ";
+    if(ps3.tu == 0)
+        cout << "Khong the chia";
     else
-        xuat(b);
+        xuat(thuong(ps2, ps3));
 
-    cout<<"\nTong: ";
-    xuat(tong(a,b));
-
-    cout<<"\nHieu: ";
-    xuat(hieu(a,b));
-
-    cout<<"\nTich: ";
-    xuat(tich(a,b));
-
-    cout<<"\nThuong: ";
-    xuat(thuong(a,b));
+    cout << endl;
 
     return 0;
 }
