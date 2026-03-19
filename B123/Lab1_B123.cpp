@@ -102,8 +102,8 @@ int main(){
     xuat(ps1);
     cout << endl;
 
-    // ===== BÀI 2 + 3 =====
-    cout << "\n===== SO SANH VA TINH TOAN =====\n";
+    // BÀI 2, 3 
+    cout << "\n SO SANH 2 PHAN SO \n";
 
     cout << "Nhap phan so thu 1:\n";
     nhap(ps2);
