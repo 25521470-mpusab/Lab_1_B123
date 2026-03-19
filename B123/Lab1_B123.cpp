@@ -2,19 +2,11 @@
 #include <cmath>
 using namespace std;
 
-/*
-==================== STRUCT ====================
-Lưu trữ phân số gồm tử và mẫu
-*/
 struct PhanSo{
     int tu;
     int mau;
 };
 
-/*
-==================== NHẬP SỐ NGUYÊN ====================
-Kiểm tra nhập hợp lệ (không phải số thì nhập lại)
-*/
 void nhapSo(int &x){
     while(!(cin >> x)){
         cout << "Loi! Nhap so nguyen: ";
@@ -23,11 +15,6 @@ void nhapSo(int &x){
     }
 }
 
-/*
-==================== NHẬP PHÂN SỐ ====================
-- Nhập tử và mẫu
-- Kiểm tra mẫu khác 0
-*/
 void nhap(PhanSo &ps){
     cout << "Nhap tu: ";
     nhapSo(ps.tu);
@@ -41,10 +28,6 @@ void nhap(PhanSo &ps){
     }
 }
 
-/*
-==================== UCLN ====================
-Tính ước chung lớn nhất
-*/
 int gcd(int a, int b){
     a = abs(a);
     b = abs(b);
@@ -56,11 +39,6 @@ int gcd(int a, int b){
     return a;
 }
 
-/*
-==================== RÚT GỌN ====================
-- Đưa mẫu về dương
-- Rút gọn phân số
-*/
 void rutGon(PhanSo &ps){
     if(ps.mau < 0){
         ps.tu = -ps.tu;
@@ -72,24 +50,14 @@ void rutGon(PhanSo &ps){
     ps.mau /= g;
 }
 
-/*
-==================== XUẤT ====================
-*/
 void xuat(PhanSo ps){
     cout << ps.tu << "/" << ps.mau;
 }
 
-/*
-==================== SO SÁNH ====================
-Trả về true nếu a > b
-*/
 bool lonHon(PhanSo a, PhanSo b){
     return a.tu * b.mau > b.tu * a.mau;
 }
 
-/*
-==================== CÁC PHÉP TOÁN ====================
-*/
 PhanSo tong(PhanSo a, PhanSo b){
     PhanSo kq;
     kq.tu = a.tu*b.mau + b.tu*a.mau;
@@ -122,17 +90,11 @@ PhanSo thuong(PhanSo a, PhanSo b){
     return kq;
 }
 
-/*
-==================== MAIN ====================
-Chương trình gồm:
-1. Rút gọn 1 phân số
-2. So sánh + tính toán 2 phân số
-*/
 int main(){
     PhanSo ps1, ps2, ps3;
 
-    // ===== BÀI 1 =====
-    cout << "===== RUT GON PHAN SO =====\n";
+    // BÀI 1 
+    cout << "RUT GON PHAN SO \n";
     nhap(ps1);
     rutGon(ps1);
 
