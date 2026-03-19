@@ -116,8 +116,12 @@ int main(){
 
     // So sánh
     cout << "Phan so lon hon: ";
-    if(lonHon(ps2, ps3)) xuat(ps2);
-    else xuat(ps3);
+    if(lonHon(ps2, ps3)){
+    xuat(ps2);
+}
+else{
+    xuat(ps3);
+}
 
     // Tính toán
     cout << "\nTong: ";
