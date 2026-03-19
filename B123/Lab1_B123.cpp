@@ -90,20 +90,26 @@ PhanSo thuong(PhanSo a, PhanSo b){
     return kq;
 }
 
+/*
+==================== MAIN ====================
+Gồm:
+- Bài 1: Rút gọn 1 phân số
+- Bài 2,3: So sánh + tính toán 2 phân số
+*/
 int main(){
     PhanSo ps1, ps2, ps3;
 
-    // BÀI 1 
-    cout << "RUT GON PHAN SO \n";
+    // ===== BÀI 1 =====
+    cout << "===== RUT GON PHAN SO =====\n";
     nhap(ps1);
     rutGon(ps1);
 
     cout << "Ket qua: ";
     xuat(ps1);
-    cout << endl;
+    cout << "\n";
 
-    // BÀI 2, 3 
-    cout << "\n SO SANH 2 PHAN SO \n";
+    // ===== BÀI 2, 3 =====
+    cout << "\n===== SO SANH VA TINH TOAN =====\n";
 
     cout << "Nhap phan so thu 1:\n";
     nhap(ps2);
@@ -114,17 +120,18 @@ int main(){
     rutGon(ps2);
     rutGon(ps3);
 
+    cout << "\nSau khi rut gon:\n";
+    cout << "PS1: "; xuat(ps2);
+    cout << "\nPS2: "; xuat(ps3);
+    cout << "\n";
+
     // So sánh
     cout << "Phan so lon hon la: ";
-
-if(lonHon(ps2, ps3)){
-    // Trường hợp ps2 > ps3
-    xuat(ps2);
-}
-else{
-    // Trường hợp ps2 <= ps3
-    xuat(ps3);
-}
+    if(lonHon(ps2, ps3)){
+        xuat(ps2);
+    } else {
+        xuat(ps3);
+    }
 
     // Tính toán
     cout << "\nTong: ";
@@ -138,14 +145,12 @@ else{
 
     cout << "\nThuong: ";
     if(ps3.tu == 0){
-    cout << "Khong the chia cho phan so bang 0";
-}
-else{
-    PhanSo ketQua = thuong(ps2, ps3);
-    xuat(ketQua);
-}
+        cout << "Khong the chia cho phan so bang 0";
+    } else {
+        PhanSo kq = thuong(ps2, ps3);
+        xuat(kq);
+    }
 
-    cout << endl;
-
+    cout << "\n";
     return 0;
 }
