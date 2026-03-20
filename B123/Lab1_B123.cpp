@@ -90,17 +90,11 @@ PhanSo thuong(PhanSo a, PhanSo b){
     return kq;
 }
 
-/*
-==================== MAIN ====================
-Gồm:
-- Bài 1: Rút gọn 1 phân số
-- Bài 2,3: So sánh + tính toán 2 phân số
-*/
 int main(){
     PhanSo ps1, ps2, ps3;
 
-    // ===== BÀI 1 =====
-    cout << "===== RUT GON PHAN SO =====\n";
+    // BÀI 1 
+    cout << "RUT GON PHAN SO\n";
     nhap(ps1);
     rutGon(ps1);
 
@@ -108,8 +102,8 @@ int main(){
     xuat(ps1);
     cout << "\n";
 
-    // ===== BÀI 2, 3 =====
-    cout << "\n===== SO SANH VA TINH TOAN =====\n";
+    // BÀI 2, 3
+    cout << "\nSO SANH 2 PHAN SO\n";
 
     cout << "Nhap phan so thu 1:\n";
     nhap(ps2);
