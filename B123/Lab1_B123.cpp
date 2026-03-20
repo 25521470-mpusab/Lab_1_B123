@@ -115,8 +115,8 @@ int main(){
     rutGon(ps3);
 
     cout << "\nSau khi rut gon:\n";
-    cout << "PS1: "; xuat(ps2);
-    cout << "\nPS2: "; xuat(ps3);
+    cout << "Phan so 1: "; xuat(ps2);
+    cout << "\nPhan so 2: "; xuat(ps3);
     cout << "\n";
 
     // So sánh
