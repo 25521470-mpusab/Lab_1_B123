@@ -47,12 +47,10 @@ void ngayKeTiep(Ngay &d){
 int main(){
 
     Ngay a;
-
     cin >> a.ngay >> a.thang >> a.nam;
 
     ngayKeTiep(a);
 
     cout << a.ngay << "/" << a.thang << "/" << a.nam;
-
     return 0;
 }
