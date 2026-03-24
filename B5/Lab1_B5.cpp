@@ -9,38 +9,43 @@ struct HocSinh {
     float van;
 };
 
-// kiểm tra nhập vào họ tên 
+// hàm kiểm tra có phải chữ số ?
+bool laChuSo(char c) {
+    return (c >= '0' && c <= '9');
+}
+
+// kiểm tra họ tên hợp lệ 
 bool hopLeTen(string s) {
     if (s.length() == 0) {
         return false;
     }
-    for (int i = 0; i < s.length(); i++) {
-        char c = s[i];
 
-        if (isdigit(c)) {
+    for (int i = 0; i < s.length(); i++) {
+        if (laChuSo(s[i])) {
             return false;
         }
     }
+
     return true;
 }
 
-// Kiểm tra nhập điểm
+// nhập điểm có kiểm tra
 float nhapDiem(string mon) {
     float x;
+
     while (true) {
         cout << "Nhap diem " << mon << ": ";
         cin >> x;
 
         if (cin.fail()) {
-            cout << "❌ Loi: Vui long nhap so!\n";
+            cout << "Loi! Phai nhap so.\n";
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } 
+            cin.ignore(1000, '\n');
+        }
         else if (x < 0 || x > 10) {
-            cout << "❌ Diem phai tu 0 den 10!\n";
-        } 
+            cout << "Diem phai la so tu 0 den 10.\n";
+        }
         else {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return x;
         }
     }
@@ -48,6 +53,7 @@ float nhapDiem(string mon) {
 
 // nhập thông tin học sinh
 void nhapHocSinh(HocSinh &hs) {
+    cin.ignore();
     do {
         cout << "Nhap ho ten: ";
         getline(cin, hs.hoten);
@@ -67,14 +73,6 @@ float tinhDTB(HocSinh hs) {
     return (hs.toan + hs.van) / 2;
 }
 
-// xếp loại
-string xepLoai(float dtb) {
-    if (dtb >= 8) return "Gioi";
-    else if (dtb >= 6.5) return "Kha";
-    else if (dtb >= 5) return "Trung binh";
-    else return "Yeu";
-}
-
 // xuất thông tin
 void xuatHocSinh(HocSinh hs) {
     float dtb = tinhDTB(hs);
@@ -84,10 +82,8 @@ void xuatHocSinh(HocSinh hs) {
     cout << "Diem Toan: " << hs.toan << endl;
     cout << "Diem Van: " << hs.van << endl;
     cout << "Diem trung binh: " << dtb << endl;
-    cout << "Xep loai: " << xepLoai(dtb) << endl;
 }
 
-// main
 int main() {
     HocSinh hs;
 
